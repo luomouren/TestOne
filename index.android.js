@@ -9,23 +9,24 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
+  Image,
   View
 } from 'react-native';
 
 export default class TestOne extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+      <View style={[styles.container]}>
+        <View style={[styles.part1]}>
+          <Text style={[styles.font15]}>测试本地图片</Text>
+          <Image source={require('./img/4.2.png')}  style={{width:200, height:100}}/>
+        </View>
+        <View style={[styles.part2]}>
+          <Text style={[styles.font15]}>测试网络图片</Text>
+          <Image source={{uri:'http://mta.zttit.com:8080/images/ZTT_1404756641470_image.jpg'}}  style={{width:200, height:100}}>
+            <Text style={[styles.font30]}>背景</Text>
+          </Image>
+        </View>
       </View>
     );
   }
@@ -33,20 +34,32 @@ export default class TestOne extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    height: 160,
+    flexDirection:'row',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  part1: {
+    height: 160,
+    flex:1,
+    borderWidth:1,
+    borderColor:'red',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  part2: {
+    height: 160,
+    flex:2,
+    borderWidth:1,
+    borderColor:'red',
+  },
+  part2: {
+    height: 160,
+    flex:2,
+    borderWidth:1,
+    borderColor:'red',
+  },
+  font30:{
+    fontSize:30,
+  },
+  font15:{
+    fontSize:15,
   },
 });
 
