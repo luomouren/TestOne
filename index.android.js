@@ -12,12 +12,26 @@ import {
   Image,
   View,
   TextInput,
+  ProgressBarAndroid,
 } from 'react-native';
 
 export default class TestOne extends Component {
   render() {
     return (
+      //  Login
       <View style={{backgroundColor:'#f4f4f4', flex:1}}>
+          <View>
+              <Text>
+                  ProgressBarAndroid控件实例
+              </Text>
+              <ProgressBarAndroid StyleAttr="Inverse"></ProgressBarAndroid>
+              <ProgressBarAndroid StyleAttr="Inverse" color="red"></ProgressBarAndroid>
+              <ProgressBarAndroid color="green" styleAttr="Horizontal" progress={0.2} indeterminate={false} style={{marginTop:10}}></ProgressBarAndroid>
+              <ProgressBarAndroid color="black" styleAttr="SmallInverse" style={{marginTop:10}}></ProgressBarAndroid>
+              <ProgressBarAndroid styleAttr="LargeInverse" style={{marginTop:10}}></ProgressBarAndroid>
+          </View>
+
+
         <Image style={styles.style_image} source={require('./img/touxiang.jpeg')}/>
         <TextInput
             style={styles.style_user_input}
