@@ -1,6 +1,10 @@
 package com.testone;
 
 import com.facebook.react.ReactActivity;
+import io.realm.react.RealmReactPackage;
+import io.realm.react.RealmReactPackage;
+import io.realm.react.RealmReactPackage;
+import io.realm.react.RealmReactPackage;
 
 public class MainActivity extends ReactActivity {
 
