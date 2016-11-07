@@ -15,81 +15,22 @@ import {
     Navigator,
 } from 'react-native';
 
-class NavButton extends React.Component{
-    render(){
-        return(
-            <TouchableHighlight style={styles.button}
-                underlayColor='#B5B5B5'
-                onPress = {this.props.onPress}>
-                <Text style={styles.buttonText}>{this.props.text}</Text>
-            </TouchableHighlight>
-        );
-    }
-}
-
-class NavMenu extends React.Component{
-    render(){
-        return(
-            <View style={styles.scene}>
-                <Text style={styles.messageText}>{this.props.message}</Text>
-                <NavButton
-                    onPress={()=>{
-                        this.props.navigator.push({
-                            message:"向右拖拽关闭页面",
-                            sceneConfig:Navigator.SceneConfigs.FloatFromRight,
-                        });
-                    }}
-                    text = '从右边向左切入页面（带有透明度变化)'
-                >
-                </NavButton>
-
-                <NavButton
-                    onPress={()=>{
-                        this.props.navigator.push({
-                            message:'向下拖拽关闭页面',
-                            sceneConfig:Navigator.SceneConfigs.FloatFromBottom,
-                        });
-                    }}
-                    text = "从下往上切入页面（带有透明度变化）"
-                ></NavButton>
-
-                <NavButton
-                    onPress={()=>{
-                        this.props.navigator.pop();
-                    }}
-                    text="页面弹出（回退一页）"
-                ></NavButton>
-
-                <NavButton
-                    onPress={()=>{
-                        this.props.navigator.popToTop();
-                    }}
-                    text="页面弹出（回退到最后一页）"
-                >
-                </NavButton>
-
-            </View>
-        );
-    }
-}
+const Realm =require('realm');
 
 class TestOne extends Component {
     render() {
+        let realm = new Realm({
+            schema:[{name:'Dog',properties:{name:'string'}}]
+        });
+        realm.write(()=>{
+            realm.create('Dog',{name:'Rex'})
+        });
         return (
-            <Navigator
-                style={styles.container}
-                initialRoute={{message:"初始页面",}}
-                renderScene={(route,navigator)=><NavMenu
-                    message={route.message}
-                    navigator={navigator}
-                />}
-                configureScene={(route)=>{
-                    if(route.sceneConfig){
-                        return route.sceneConfig;
-                    }
-                    return Navigator.SceneConfigs.FloatFromBottom;
-                }}>
-            </Navigator>
+            <View style={styles.container}>
+                <Text style={styles.messageText}>
+                    Dogs在Realm中的行数是:{realm.objects('Dog').length}
+                </Text>
+            </View>
         );
     }
 }
