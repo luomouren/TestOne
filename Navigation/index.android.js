@@ -5,7 +5,7 @@ import {
     Navigator,
     AppRegistry
 } from 'react-native';
-import FirstPageComponent from './Navigation/FirstPageComponent';
+import FirstPageComponent from './FirstPageComponent';
 
 export default class TestOne extends React.Component {
     render() {
