@@ -33,12 +33,28 @@ class TestOne extends Component
 
 
     fetchData() {
+        /* let params = {"name":"admin","password":"admin123"};
 
-        /*let formData = new FormData();
-        formData.append("username","admin");
+         fetch("http://192.168.0.102:8080/spring-mvc/items/queryItems.html" , {
+         method: 'POST',
+         headers: {},
+         body:JSON.stringify(params),
+         }).then((response) => {
+         if (response.ok) {
+         return response.json();
+         }
+         }).then((json) => {
+         alert(JSON.stringify(json));
+         }).catch((error) => {
+         console.error(error);
+         });
+         */
+
+        let formData = new FormData();
+        formData.append("name","admin123456");
         formData.append("password","admin123");
 
-        fetch(url , {
+        fetch("http://192.168.0.102:8080/spring-mvc/items/queryItems.html" , {
             method: 'POST',
             headers: {},
             body: formData,
@@ -50,15 +66,14 @@ class TestOne extends Component
             alert(JSON.stringify(json));
         }).catch((error) => {
             console.error(error);
-        });*/
+        });
 
-
-       fetch("http://172.16.0.236:8080/zt?username=admin&password=12345678&formLoginHome=true")
-            .then((response) => response.text())
-            .then((responseData) => {
-                console.log("responseData",responseData);
-            })
-            .done();
+        /* fetch("http://172.16.0.236:8080/zt?username=admin&password=12345678&formLoginHome=true")
+         .then((response) => response.text())
+         .then((responseData) => {
+         console.log("responseData",responseData);
+         })
+         .done();*/
 
     }
 
@@ -68,11 +83,11 @@ class TestOne extends Component
         }
 
         return (
-            {/*<ListView
-                dataSource={this.state.dataSource}
-                renderRow={this.renderMovie}
-                style={styles.listView}
-            />*/}
+        {/*<ListView
+         dataSource={this.state.dataSource}
+         renderRow={this.renderMovie}
+         style={styles.listView}
+         />*/}
         );
     }
 
@@ -89,13 +104,13 @@ class TestOne extends Component
         return (
             <View style={styles.container}>
                 {/*<Image
-                    source={{uri: movie.posters.thumbnail}}
-                    style={styles.thumbnail}
-                />
-                <View style={styles.rightContainer}>
-                    <Text style={styles.title}>{movie.title}</Text>
-                    <Text style={styles.year}>{movie.year}</Text>
-                </View>  */}
+                 source={{uri: movie.posters.thumbnail}}
+                 style={styles.thumbnail}
+                 />
+                 <View style={styles.rightContainer}>
+                 <Text style={styles.title}>{movie.title}</Text>
+                 <Text style={styles.year}>{movie.year}</Text>
+                 </View>  */}
             </View>
         );
     }
