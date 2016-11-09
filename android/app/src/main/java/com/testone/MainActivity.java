@@ -1,6 +1,8 @@
 package com.testone;
 
 import com.facebook.react.ReactActivity;
+import com.imagepicker.ImagePickerPackage;
+import com.imagepicker.ImagePickerPackage;
 import io.realm.react.RealmReactPackage;
 import io.realm.react.RealmReactPackage;
 import io.realm.react.RealmReactPackage;
