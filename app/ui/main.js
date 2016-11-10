@@ -43,7 +43,7 @@ export default class LoginActivity extends Component {
                         this.password = text;
                     }}/>
 
-                    <TextInput
+                   {/* <TextInput
                         style={styles.style_user_input}
                         placeholder="QQ号/手机号/邮箱"
                         numberOfLines={1}
@@ -59,7 +59,7 @@ export default class LoginActivity extends Component {
                         underlineColorAndroid={'transparent'}
                         secureTextEntry={true}
                         textAlign="center"
-                    />
+                    />*/}
 
 
                     <LoginButton name='登录' onPressCallback={this.onPressCallback}/>
