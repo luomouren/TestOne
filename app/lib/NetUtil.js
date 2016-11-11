@@ -12,8 +12,6 @@ let NetUtil = {
             },
             body:data
         };
-        alert( JSON.stringify(fetchOptions) );
-        console.info(JSON.stringify(fetchOptions));
         fetch(url, fetchOptions)
             .then((response) => response.text())
             .then((responseText) => {

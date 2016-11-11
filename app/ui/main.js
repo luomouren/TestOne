@@ -74,11 +74,8 @@ export default class LoginActivity extends Component {
         let formData = new FormData();
         formData.append("username",this.userName);
         formData.append("password",this.password);
-        console.info(formData);
-        //http://172.16.0.236:8080/zt?username=admin&password=12345678&formLoginHome=true
-        //let url = "http://192.168.0.103:8080/zt?formLoginHome=true&password=amin12";
-        //let url = "http://192.168.0.103:8080/spring-mvc/items/queryItems.html";
-        let url = "http://172.16.0.236:8080/spring-mvc/items/queryItems.html";
+        let url = "http://172.16.0.236:8080/zt";
+        //let url = "http://172.16.0.236:8080/SpringMVC-Demo/app/loginApp";
         NetUitl.postJson(url,formData,(responseText) => {
             alert(responseText);
             this.onLoginSuccess();
