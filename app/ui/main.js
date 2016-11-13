@@ -42,26 +42,6 @@ export default class LoginActivity extends Component {
                     <EditView name='输入密码' secureTextEntry={true} onChangeText={(text) => {
                         this.password = text;
                     }}/>
-
-                   {/* <TextInput
-                        style={styles.style_user_input}
-                        placeholder="QQ号/手机号/邮箱"
-                        numberOfLines={1}
-                        autoFocus={true}
-                        underlineColorAndroid={'transparent'}
-                        textAlign="center"
-                    />
-                    <View style={{height:1,backgroundColor:'#f4f4f4'}}/>
-                    <TextInput
-                        style={styles.style_pwd_input}
-                        placeholder="密码"
-                        numberOfLines={1}
-                        underlineColorAndroid={'transparent'}
-                        secureTextEntry={true}
-                        textAlign="center"
-                    />*/}
-
-
                     <LoginButton name='登录' onPressCallback={this.onPressCallback}/>
                     <Text style={{color:"#4A90E2",textAlign:'center',marginTop:10}} >忘记密码？</Text>
                 </View>
@@ -74,14 +54,13 @@ export default class LoginActivity extends Component {
         let formData = new FormData();
         formData.append("username",this.userName);
         formData.append("password",this.password);
-        let url = "http://172.16.0.236:8080/zt";
+        //let url = "http://172.16.0.236:8080/zt";
         //let url = "http://172.16.0.236:8080/SpringMVC-Demo/app/loginApp";
+        let url = "http://192.168.0.104:8080/pwmana/itemsController/app/loginApp";
         NetUitl.postJson(url,formData,(responseText) => {
             alert(responseText);
             this.onLoginSuccess();
         })
-
-
     };
 
     //跳转到第二个页面去
@@ -121,17 +100,8 @@ const styles = StyleSheet.create({
         borderRadius:35,
         height: 70,
         width:70,
-       // marginTop:40,
+        // marginTop:40,
         marginBottom:10,
         alignSelf:'center',
-    },
-    style_user_input:{
-        backgroundColor:'#fff',
-        marginTop:10,
-        height:40,
-    },
-    style_pwd_input:{
-        backgroundColor:'#fff',
-        height:40,
     },
 });

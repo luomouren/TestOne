@@ -10,6 +10,9 @@ import {
     ToolbarAndroid,
     Text
 } from 'react-native';
+
+import ImageSelect from '../lib/ImageVideoSelect';
+
 export default class LoginSuccess extends React.Component {
     constructor(props){
         super(props);
@@ -23,6 +26,16 @@ export default class LoginSuccess extends React.Component {
             navigator.pop();
         }
     }
+    //跳转到拍照界面
+    onImageSelect(){
+        const { navigator } = this.props;
+        if (navigator) {
+            navigator.push({
+                name : 'ImageSelect',
+                component : ImageSelect,
+            });
+        }
+    }
 
     render(){
         return (
@@ -30,6 +43,9 @@ export default class LoginSuccess extends React.Component {
             <View >
                 <TouchableOpacity onPress = {this.onJump.bind(this)}>
                     <Text> 登录成功，点击返回登录页面 </Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress = {this.onImageSelect.bind(this)}>
+                    <Text> 车辆识别 </Text>
                 </TouchableOpacity>
             </View>
 

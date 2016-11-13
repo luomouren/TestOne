@@ -6,6 +6,7 @@ import {
   View,
   PixelRatio,
   TouchableOpacity,
+    TouchableHighlight,
   Image,
   Platform
 } from 'react-native';
@@ -89,6 +90,38 @@ export default class App extends React.Component {
     });
   }
 
+  upload() {
+    console.log('upload photo');
+    let formData = new FormData();
+    let key = 'key';
+    let token = '34567890';
+    alert(this.state.avatarSource.uri);
+    formData.append('file', {uri: this.state.avatarSource.uri, type: 'application/octet-stream', name: key});
+    formData.append('key', key);
+    formData.append('token', token);
+
+    let opts = {};
+    opts.body = formData;
+    opts.method = 'post';
+
+    var fetchOptions = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'multipart/form-data;boundary=6ff46e0b6b5148d984f148b6542e5a5d'
+      },
+      body:formData
+    };
+
+    let host = "http://192.168.0.104:8080/pwmana/itemsController/app/upload";
+
+    return fetch(host, fetchOptions).then((response) => {
+      console.log(response);
+    }).catch((err) => {
+      console.warn(err);
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -109,6 +142,10 @@ export default class App extends React.Component {
         { this.state.videoSource &&
           <Text style={{margin: 8, textAlign: 'center'}}>{this.state.videoSource}</Text>
         }
+
+        <TouchableHighlight onPress={this.upload.bind(this)}>
+          <Text>上传到服务器</Text>
+        </TouchableHighlight>
       </View>
     );
   }
