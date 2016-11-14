@@ -37,12 +37,14 @@ const LoginStyles = StyleSheet.create({
         width:30,
     },
     loginTextView: {
-        marginTop: 10,
-        height:50,
-        backgroundColor: '#3281DD',
+        marginTop:15,
+        marginLeft:10,
+        marginRight:10,
+        backgroundColor:'#63B8FF',
+        height:35,
         borderRadius:5,
-        flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent:'center',
         alignItems:'center',
     },
 });
+

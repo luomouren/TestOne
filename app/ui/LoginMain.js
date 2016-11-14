@@ -29,28 +29,47 @@ export default class LoginActivity extends Component {
     render() {
         return (
 
-            <View style={LoginStyles.loginview}>
-                <View   style={{flexDirection: 'row',height:100,marginTop:1,
-                    justifyContent: 'center',
-                    alignItems: 'flex-start',}}>
-                    <Image style={styles.style_image} source={require('../img/touxiang.jpeg')}/>
-                </View>
-                <View style={{marginTop:80}}>
-                    <EditView  name='输入用户名/注册手机号' onChangeText={(text) => {
+            <View style={styles.style_main_view}>
+
+                <Image style={styles.style_image} source={require('../img/touxiang.jpeg')}/>
+                <TextInput
+                    style={styles.style_user_input}
+                    placeholder="账号"
+                    numberOfLines={1}
+                    autoFocus={true}
+                    underlineColorAndroid={'transparent'}
+                    textAlign="center"
+                    onChangeText={(text) => {
                         this.userName = text;
-                    }}/>
-                    <EditView name='输入密码' secureTextEntry={true} onChangeText={(text) => {
+                    }}
+                />
+                <View style={{height:1,backgroundColor:'#f4f4f4'}}/>
+                <TextInput
+                    style={styles.style_pwd_input}
+                    placeholder="密码"
+                    numberOfLines={1}
+                    underlineColorAndroid={'transparent'}
+                    secureTextEntry={true}
+                    textAlign="center"
+                    onChangeText={(text) => {
                         this.password = text;
-                    }}/>
-                    <LoginButton name='登录' onPressCallback={this.onPressCallback}/>
-                    <Text style={{color:"#4A90E2",textAlign:'center',marginTop:10}} >忘记密码？</Text>
+                    }}
+                />
+                <LoginButton name='登录' onPressCallback={this.onPressCallback}/>
+                <View style={{flex:1,flexDirection:'row',alignItems:'flex-end',bottom:10}}>
+                    <Text style={styles.style_view_unlogin}>无法登录?</Text>
+                    <Text style={styles.style_view_register}>注册</Text>
                 </View>
+
             </View>
         )
     }
 
 
     onPressCallback = () => {
+        //账号、密码是否为空校验
+        
+
         let formData = new FormData();
         formData.append("username",this.userName);
         formData.append("password",this.password);
@@ -76,32 +95,51 @@ export default class LoginActivity extends Component {
 
 }
 
-class loginLineView extends Component {
-    render() {
-        return (
-            <Text >
-                没有帐号
-            </Text>
-        );
-    }
-}
-
-const LoginStyles = StyleSheet.create({
-    loginview: {
-        flex: 1,
-        padding: 30,
-        backgroundColor: '#ffffff',
-    },
-});
-
 
 const styles = StyleSheet.create({
+    style_main_view:{
+        flex: 1,
+        //paddingTop:50,
+        backgroundColor: '#ffffff',
+    },
     style_image: {
         borderRadius:35,
         height: 70,
         width:70,
-        // marginTop:40,
-        marginBottom:10,
+        marginTop:40,
         alignSelf:'center',
     },
+    style_user_input:{
+        backgroundColor:'#fff',
+        marginTop:10,
+        height:40,
+    },
+    style_pwd_input:{
+        backgroundColor:'#fff',
+        height:40,
+    },
+    style_view_commit:{
+        marginTop:15,
+        marginLeft:10,
+        marginRight:10,
+        backgroundColor:'#63B8FF',
+        height:35,
+        borderRadius:5,
+        justifyContent:'center',
+        alignItems:'center',
+    },
+    style_view_unlogin:{
+        fontSize:12,
+        color:'#63B8FF',
+        marginLeft:10,
+    },
+    style_view_register:{
+        fontSize:12,
+        color:'#63B8FF',
+        marginRight:10,
+        alignItems:'flex-end',
+        flex:1,
+        flexDirection:'row',
+        textAlign:'right',
+    }
 });
