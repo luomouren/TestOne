@@ -45,7 +45,7 @@ export default class LoginSuccess extends React.Component {
                     <Text> 登录成功，点击返回登录页面 </Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress = {this.onImageSelect.bind(this)}>
-                    <Text> 车辆识别 </Text>
+                    <Text> 拍照识别 </Text>
                 </TouchableOpacity>
             </View>
 

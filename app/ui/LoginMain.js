@@ -13,12 +13,14 @@ import {
     View,
     Image,
     TextInput,
+    ToastAndroid,
     TouchableOpacity
 } from 'react-native';
 import EditView from '../lib/EditView';
 import LoginButton from '../lib/LoginButton';
 import LoginSuccess from '../ui/LoginSuccess';
 import NetUitl from '../lib/NetUtil';
+
 export default class LoginActivity extends Component {
     constructor(props) {
         super(props);
@@ -68,7 +70,15 @@ export default class LoginActivity extends Component {
 
     onPressCallback = () => {
         //账号、密码是否为空校验
-        
+        if(null==this.userName || ""==this.userName){
+            ToastAndroid.show("账号不能为空!",ToastAndroid.LONG);
+            return false;
+        }
+        if(null==this.password || ""==this.password){
+            ToastAndroid.show("密码不能为空!",ToastAndroid.LONG);
+            return false;
+        }
+
 
         let formData = new FormData();
         formData.append("username",this.userName);
@@ -77,8 +87,11 @@ export default class LoginActivity extends Component {
         //let url = "http://172.16.0.236:8080/SpringMVC-Demo/app/loginApp";
         let url = "http://172.16.0.236:8080/pwmana/user/app/login";
         NetUitl.postJson(url,formData,(responseText) => {
-            alert(responseText);
-            this.onLoginSuccess();
+            if("false"==responseText){
+                ToastAndroid.show("账号或密码不对!",ToastAndroid.LONG);
+            }else{
+                this.onLoginSuccess();
+            }
         })
     };
 
