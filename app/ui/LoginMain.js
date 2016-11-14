@@ -56,7 +56,7 @@ export default class LoginActivity extends Component {
         formData.append("password",this.password);
         //let url = "http://172.16.0.236:8080/zt";
         //let url = "http://172.16.0.236:8080/SpringMVC-Demo/app/loginApp";
-        let url = "http://192.168.0.104:8080/pwmana/itemsController/app/loginApp";
+        let url = "http://172.16.0.236:8080/pwmana/user/app/login";
         NetUitl.postJson(url,formData,(responseText) => {
             alert(responseText);
             this.onLoginSuccess();

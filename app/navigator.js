@@ -11,7 +11,7 @@ import {
     View,
     Navigator
 } from 'react-native';
-import Main from './ui/main';
+import Main from './ui/LoginMain';
 export default class navigator extends Component {
     constructor(props) {
         super(props);
