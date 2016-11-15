@@ -83,10 +83,12 @@ export default class LoginActivity extends Component {
         let formData = new FormData();
         formData.append("username",this.userName);
         formData.append("password",this.password);
-        //let url = "http://172.16.0.236:8080/zt";
+        formData.append("uname","app-test");
+        //let url = "http://172.16.0.236:8080/zt/login";
         //let url = "http://172.16.0.236:8080/SpringMVC-Demo/app/loginApp";
         let url = "http://172.16.0.236:8080/pwmana/user/app/login";
-        NetUitl.postJson(url,formData,(responseText) => {
+        //let url = "http://172.16.0.236:8080/SSH01/user!reg";
+        NetUitl.postUrlText(url,formData,(responseText) => {
             if("false"==responseText){
                 ToastAndroid.show("账号或密码不对!",ToastAndroid.LONG);
             }else{

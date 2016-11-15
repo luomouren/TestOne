@@ -12,16 +12,22 @@ import {
 } from 'react-native';
 
 import ImagePicker from 'react-native-image-picker';
+import LoginButton from '../lib/LoginButton';
+import NetUitl from '../lib/NetUtil';
 
 export default class App extends React.Component {
 
   state = {
     avatarSource: null,
-    videoSource: null
   };
 
   selectPhotoTapped() {
     const options = {
+      title: '上传图片',
+      takePhotoButtonTitle: '拍照',
+      chooseFromLibraryButtonTitle: '从相册选择',
+      cancelButtonTitle: '取消',
+
       quality: 1.0,
       maxWidth: 500,
       maxHeight: 500,
@@ -62,34 +68,6 @@ export default class App extends React.Component {
     });
   }
 
-  selectVideoTapped() {
-    const options = {
-      title: 'Video Picker',
-      takePhotoButtonTitle: 'Take Video...',
-      mediaType: 'video',
-      videoQuality: 'medium'
-    };
-
-    ImagePicker.showImagePicker(options, (response) => {
-      console.log('Response = ', response);
-
-      if (response.didCancel) {
-        console.log('User cancelled video picker');
-      }
-      else if (response.error) {
-        console.log('ImagePicker Error: ', response.error);
-      }
-      else if (response.customButton) {
-        console.log('User tapped custom button: ', response.customButton);
-      }
-      else {
-        this.setState({
-          videoSource: response.uri
-        });
-      }
-    });
-  }
-
   upload() {
     console.log('upload photo');
     let formData = new FormData();
@@ -113,14 +91,18 @@ export default class App extends React.Component {
       body:formData
     };
 
-    //let host = "http://192.168.0.104:8080/pwmana/itemsController/app/upload";
-    let host = "http://172.16.0.236:8080/zt/vehicleIdentification!upload";
+    let uploadImageUrl = "http://172.16.0.236:8080/pwmana/itemsController/app/upload";
+    //let uploadImageUrl = "http://172.16.0.236:8080/zt/vehicleIdentification!upload";
 
-    return fetch(host, fetchOptions).then((response) => {
-      console.log(response);
-    }).catch((err) => {
-      console.warn(err);
-    });
+    return NetUitl.postUrlJson(uploadImageUrl,formData,(response) => {
+      alert(response);
+      console.info(response);
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(response),
+        loaded: true,
+      });
+      // {carNo: "京x3425", carType: "别克", color: "黑色", numberColor: "蓝色"}
+    })
   }
 
   render() {
@@ -128,25 +110,12 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
           <View style={[styles.avatar, styles.avatarContainer, {marginBottom: 20}]}>
-          { this.state.avatarSource === null ? <Text>Select a Photo</Text> :
+          { this.state.avatarSource === null ? <Text>选择图片</Text> :
             <Image style={styles.avatar} source={this.state.avatarSource} />
           }
           </View>
         </TouchableOpacity>
-
-        <TouchableOpacity onPress={this.selectVideoTapped.bind(this)}>
-          <View style={[styles.avatar, styles.avatarContainer]}>
-            <Text>Select a Video</Text>
-          </View>
-        </TouchableOpacity>
-
-        { this.state.videoSource &&
-          <Text style={{margin: 8, textAlign: 'center'}}>{this.state.videoSource}</Text>
-        }
-
-        <TouchableHighlight onPress={this.upload.bind(this)}>
-          <Text>上传到服务器</Text>
-        </TouchableHighlight>
+        <LoginButton name='上传' onPressCallback={this.upload.bind(this)}/>
       </View>
     );
   }
@@ -158,7 +127,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF'
+    backgroundColor: '#ffffff'
   },
   avatarContainer: {
     borderColor: '#9B9B9B',
@@ -167,8 +136,8 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   avatar: {
-    borderRadius: 75,
-    width: 150,
-    height: 150
-  }
+    borderRadius: 90,
+    width: 250,
+    height: 350
+  },
 });

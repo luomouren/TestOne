@@ -11,7 +11,7 @@ import {
     Text
 } from 'react-native';
 
-import ImageSelect from '../lib/ImageVideoSelect';
+import ImageSelect from '../lib/ImageSelect';
 
 export default class LoginSuccess extends React.Component {
     constructor(props){
