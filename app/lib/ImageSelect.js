@@ -6,7 +6,7 @@ import {
   View,
   PixelRatio,
   TouchableOpacity,
-    TouchableHighlight,
+  TouchableHighlight,
   Image,
   Platform
 } from 'react-native';
@@ -14,12 +14,12 @@ import {
 import ImagePicker from 'react-native-image-picker';
 import LoginButton from '../lib/LoginButton';
 import NetUitl from '../lib/NetUtil';
-
+import ImageResult from '../lib/ImageResult';
 export default class App extends React.Component {
 
-  state = {
+/*  state = {
     avatarSource: null,
-  };
+  };*/
 
   selectPhotoTapped() {
     const options = {
@@ -68,6 +68,34 @@ export default class App extends React.Component {
     });
   }
 
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            dataSource: null,
+            loaded: false,
+            avatarSource:null,
+        };
+    }
+    onImageResult(response){
+        this.setState({
+            dataSource: response,
+            loaded: true,
+        });
+
+        const { navigator } = this.props;
+        if (navigator) {
+            navigator.push({
+                name : 'ImageResult',
+                component : ImageResult,
+                params: {
+                    loaded: this.state.loaded,
+                    dataSource: this.state.dataSource,
+                }
+            });
+        }
+    }
+
   upload() {
     console.log('upload photo');
     let formData = new FormData();
@@ -95,9 +123,7 @@ export default class App extends React.Component {
     //let uploadImageUrl = "http://172.16.0.236:8080/zt/vehicleIdentification!upload";
 
     return NetUitl.postUrlJson(uploadImageUrl,formData,(response) => {
-      alert(response);
-      console.info(response);
-      // {carNo: "京x3425", carType: "别克", color: "黑色", numberColor: "蓝色"}
+      this.onImageResult(response);
     })
   }
 
