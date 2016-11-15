@@ -97,10 +97,6 @@ export default class App extends React.Component {
     return NetUitl.postUrlJson(uploadImageUrl,formData,(response) => {
       alert(response);
       console.info(response);
-      this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(response),
-        loaded: true,
-      });
       // {carNo: "京x3425", carType: "别克", color: "黑色", numberColor: "蓝色"}
     })
   }
