@@ -98,26 +98,12 @@ export default class App extends React.Component {
     }
 
   upload() {
-    console.log('upload photo');
     let formData = new FormData();
     let key = 'key';
     let token = '34567890';
     formData.append('file', {uri: this.state.avatarSource.uri, type: 'application/octet-stream', name: key});
     formData.append('key', key);
     formData.append('token', token);
-
-    let opts = {};
-    opts.body = formData;
-    opts.method = 'post';
-
-    var fetchOptions = {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'multipart/form-data;boundary=6ff46e0b6b5148d984f148b6542e5a5d'
-      },
-      body:formData
-    };
 
     let uploadImageUrl = "http://172.16.0.236:8080/pwmana/itemsController/app/upload";
     //let uploadImageUrl = "http://172.16.0.236:8080/zt/vehicleIdentification!upload";
