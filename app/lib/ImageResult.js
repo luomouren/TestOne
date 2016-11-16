@@ -13,6 +13,7 @@ import {
     Text,
     View,
     ListView,
+    PixelRatio,
 } from 'react-native';
 export default class ImageResult extends React.Component {
     //初始化参数，以防参数没有从上一个页面传过来
@@ -21,15 +22,15 @@ export default class ImageResult extends React.Component {
         this.state = {
             loaded: false,
             dataSource: null,
+            avatarSource:null,
         }
     }
     componentDidMount() {
-        alert(this.props.loaded);
-        console.log("ImageResult.js==",this.props.dataSource);
         //这里获取从上一个js传递过来的参数
         this.setState({
             loaded: this.props.loaded,
             dataSource: this.props.dataSource,
+            avatarSource:this.props.avatarSource,
         });
     }
     render() {
@@ -38,24 +39,21 @@ export default class ImageResult extends React.Component {
         }
 
         return (
-            <View style={styles.container}>
-                {/*<Image
-                 source={{uri: movie.posters.thumbnail}}
-                 style={styles.thumbnail}
-                 />*/}
-                <View style={styles.rightContainer}>
-                    <Text style={styles.title}>车牌号：{this.state.dataSource.carNo}</Text>
-                    <Text style={styles.year}>车牌颜色：{this.state.dataSource.numberColor}</Text>
-                    <Text style={styles.year}>车型：{this.state.dataSource.carType}</Text>
-                    <Text style={styles.year}>车身颜色：{this.state.dataSource.color}</Text>
+            <View style={styles.listView}>
+                <View style={styles.container}>
+                    { this.state.avatarSource === null ? <Text>选择图片</Text> :
+                        <Image style={styles.avatar} source={this.state.avatarSource} />
+                    }
+                    <View style={styles.rightContainer}>
+
+                        <Text style={styles.title}>车牌号：{this.state.dataSource.carNo}</Text>
+                        <Text style={styles.filed}>车牌颜色：{this.state.dataSource.numberColor}</Text>
+                        <Text style={styles.filed}>车型：{this.state.dataSource.carType}</Text>
+                        <Text style={styles.filed}>车身颜色：{this.state.dataSource.color}</Text>
+                    </View>
                 </View>
             </View>
 
-            /*<ListView
-                dataSource={this.state.dataSource}
-                renderRow={this.renderMovie}
-                style={styles.listView}
-            />*/
         );
     }
 
@@ -86,15 +84,23 @@ var styles = StyleSheet.create({
         marginBottom: 8,
         textAlign: 'center',
     },
-    year: {
+    filed: {
         textAlign: 'center',
-    },
-    thumbnail: {
-        width: 53,
-        height: 81,
     },
     listView: {
         paddingTop: 20,
+        paddingLeft: 20,
         backgroundColor: '#F5FCFF',
+    },
+    avatarContainer: {
+        borderColor: '#9B9B9B',
+        borderWidth: 1 / PixelRatio.get(),
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    avatar: {
+        //borderRadius: 90,
+        width: 106,
+        height: 162,
     },
 });

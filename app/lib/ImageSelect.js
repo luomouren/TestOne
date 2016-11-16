@@ -91,6 +91,7 @@ export default class App extends React.Component {
                 params: {
                     loaded: this.state.loaded,
                     dataSource: this.state.dataSource,
+                    avatarSource:this.state.avatarSource,
                 }
             });
         }
@@ -101,7 +102,6 @@ export default class App extends React.Component {
     let formData = new FormData();
     let key = 'key';
     let token = '34567890';
-    alert(this.state.avatarSource.uri);
     formData.append('file', {uri: this.state.avatarSource.uri, type: 'application/octet-stream', name: key});
     formData.append('key', key);
     formData.append('token', token);
