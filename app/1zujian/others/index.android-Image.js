@@ -19,7 +19,7 @@ export default class TestOne extends Component {
       <View style={[styles.container]}>
         <View style={[styles.part1]}>
           <Text style={[styles.font15]}>测试本地图片</Text>
-          <Image source={require('./../img/4.2.png')} style={{width:200, height:100}}/>
+          <Image source={require('./../../img/4.2.png')} style={{width:200, height:100}}/>
         </View>
         <View style={[styles.part2]}>
           <Text style={[styles.font15]}>测试网络图片</Text>
