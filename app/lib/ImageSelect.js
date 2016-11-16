@@ -15,12 +15,8 @@ import ImagePicker from 'react-native-image-picker';
 import LoginButton from '../lib/LoginButton';
 import NetUitl from '../lib/NetUtil';
 import ImageResult from '../lib/ImageResult';
-export default class App extends React.Component {
 
-/*  state = {
-    avatarSource: null,
-  };*/
-
+export default class ImageSelect extends React.Component {
   selectPhotoTapped() {
     const options = {
       title: '上传图片',

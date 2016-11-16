@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 
 import ImageSelect from '../lib/ImageSelect';
+import ListViewDatas from '../lib/ListViewDatas';
 
 export default class LoginSuccess extends React.Component {
     constructor(props){
@@ -36,7 +37,16 @@ export default class LoginSuccess extends React.Component {
             });
         }
     }
-
+    //跳转到历史识别结果列表
+    onListViewDatas(){
+        const { navigator } = this.props;
+        if (navigator) {
+            navigator.push({
+                name : 'ListViewDatas',
+                component : ListViewDatas,
+            });
+        }
+    }
     render(){
         return (
 
@@ -46,6 +56,9 @@ export default class LoginSuccess extends React.Component {
                 </TouchableOpacity>
                 <TouchableOpacity onPress = {this.onImageSelect.bind(this)}>
                     <Text> 拍照识别 </Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress = {this.onListViewDatas.bind(this)}>
+                    <Text> 历史识别 </Text>
                 </TouchableOpacity>
             </View>
 
