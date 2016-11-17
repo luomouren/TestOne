@@ -16,9 +16,38 @@ import ImageSelect from '../lib/ImageSelect';
 import ListViewDatas from '../lib/ListViewDatas';
 import TabBar from '../lib/TabBar/TabBar';
 
+import NavigationBarIcon from 'react-native-navbar';
+
+
 export default class LoginSuccess extends Component {
     render() {
+
+        const rightButtonConfig = {
+            title: 'Next',
+            handler: () => alert('hello!'),
+        };
+        const titleConfig = {
+            title: '中科唯实',
+            tintColor:'#fff',
+        };
+        const leftButton={
+            title : 'Back',
+            handler : () => alert('hello!'),
+            style : {},
+           // tintColor : '#E78170',
+           // icon : '../img/icon/bak_normal.png'
+        };
         return (
+
+        <View style={{ flex: 1, }}>
+            <NavigationBarIcon style={styles.narBarContainer}
+                               title={titleConfig}/>
+            {/*<NavigationBarIcon
+             title={titleConfig}
+             rightButton={rightButtonConfig}
+             leftButton ={leftButton}
+             />*/}
+
             <View style={styles.container}>
                 <TabBar style={styles.content}>
                     <TabBar.Item
@@ -57,6 +86,10 @@ export default class LoginSuccess extends Component {
                     </TabBar.Item>
                 </TabBar>
             </View>
+
+        </View>
+
+
         );
     }
 
@@ -76,7 +109,10 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-    }
+    },
+    narBarContainer: {
+        backgroundColor: '#63B8FF',
+    },
 });
 
 
@@ -84,7 +120,6 @@ const styles = StyleSheet.create({
 
 
 /*
-
 export default class LoginSuccess extends React.Component {
     constructor(props){
         super(props);

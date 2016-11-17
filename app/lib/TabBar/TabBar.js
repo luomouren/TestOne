@@ -21,8 +21,10 @@ export default class TabBar extends Component {
     static defaultProps = {
         defaultPage: 0,
         navFontSize: 14,
-        navTextColor: 'black',
-        navTextColorSelected: '#FF9100',
+        //navTextColor: 'black',
+        navTextColor: '#707070',
+        //navTextColorSelected: '#FF9100',
+        navTextColorSelected: '#63B8FF',
     };
 
     static propTypes = {
@@ -181,6 +183,7 @@ const styles = StyleSheet.create({
         top: Dimensions.get('window').height,
         bottom: -Dimensions.get('window').height,
     },
+    //TabBar的背景颜色
     nav: {
         flexDirection: 'row',
         width: Dimensions.get('window').width,
