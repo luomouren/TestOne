@@ -11,6 +11,7 @@
     "react-native": "0.35.0",
     "react-native-camera": "^0.3.8",
     "react-native-image-picker": "^0.22.13",
+    "react-native-navbar": "^1.5.4",
     "react-native-orientation-listener": "0.0.4",
     "react-native-tabbar": "^1.0.0",
     "react-native-xtabbar": "^0.2.1",

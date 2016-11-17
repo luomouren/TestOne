@@ -74,6 +74,7 @@ export default class ImageSelect extends React.Component {
         };
     }
     onImageResult(response){
+
         this.setState({
             dataSource: response,
             loaded: true,
