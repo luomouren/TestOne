@@ -137,6 +137,7 @@ android {
 }
 
 dependencies {
+	compile project(':react-native-smart-swipe-refresh-layout')//20161118  Amy add
 	compile project(':realm')//Amy  add  20161103
 	compile project(':react-native-image-picker')//Amy add 2016-11-09
     compile fileTree(dir: "libs", include: ["*.jar"])

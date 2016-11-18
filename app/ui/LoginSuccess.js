@@ -14,6 +14,7 @@ import {
 
 import ImageSelect from '../lib/ImageSelect';
 import ListViewDatas from '../lib/ListViewDatas';
+import HistoryDatas from '../lib/HistoryDatas';
 import TabBar from '../lib/TabBar/TabBar';
 
 import NavigationBarIcon from 'react-native-navbar';
@@ -73,7 +74,7 @@ export default class LoginSuccess extends Component {
                         icon={require('../img/icon/history_normal.png')}
                         selectedIcon={require('../img/icon/history_hightlight.png')}
                         title='历史识别'>
-                        <ListViewDatas/>
+                        <HistoryDatas/>
                     </TabBar.Item>
 
                     <TabBar.Item

@@ -12,6 +12,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.imagepicker.ImagePickerPackage; // import package
+import com.reactnativecomponent.swiperefreshlayout.RCTSwipeRefreshLayoutPackage;    //import package
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,7 +31,8 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new RealmReactPackage(),
-            new ImagePickerPackage()
+            new ImagePickerPackage(),
+			 new RCTSwipeRefreshLayoutPackage()  //register Module
       );
     }
   };
