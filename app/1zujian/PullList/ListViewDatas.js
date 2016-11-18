@@ -10,7 +10,7 @@ import {
     View,
     ListView,
 } from 'react-native';
-import NetUitl from './NetUtil';
+import NetUitl from '../../lib/NetUtil';
 
 export default class ListViewDatas extends Component
 {

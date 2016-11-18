@@ -13,12 +13,10 @@ import {
 } from 'react-native';
 
 import ImageSelect from '../lib/ImageSelect';
-import ListViewDatas from '../lib/ListViewDatas';
 import HistoryDatas from '../lib/HistoryDatas';
 import TabBar from '../lib/TabBar/TabBar';
 
 import NavigationBarIcon from 'react-native-navbar';
-
 
 export default class LoginSuccess extends Component {
     render() {
@@ -41,13 +39,9 @@ export default class LoginSuccess extends Component {
         return (
 
         <View style={{ flex: 1, }}>
+            {/*NavBar*/}
             <NavigationBarIcon style={styles.narBarContainer}
                                title={titleConfig}/>
-            {/*<NavigationBarIcon
-             title={titleConfig}
-             rightButton={rightButtonConfig}
-             leftButton ={leftButton}
-             />*/}
 
             <View style={styles.container}>
                 <TabBar style={styles.content}>
