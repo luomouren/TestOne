@@ -16,7 +16,9 @@ import LoginButton from '../lib/LoginButton';
 import NetUitl from '../lib/NetUtil';
 import ImageResult from '../lib/ImageResult';
 
+
 export default class ImageSelect extends React.Component {
+
   selectPhotoTapped() {
     const options = {
       title: '上传图片',
@@ -34,7 +36,6 @@ export default class ImageSelect extends React.Component {
 
     ImagePicker.showImagePicker(options, (response) => {
       console.log('Response = ', response);
-
       if (response.didCancel) {
         console.log('User cancelled photo picker');
       }
@@ -46,17 +47,14 @@ export default class ImageSelect extends React.Component {
       }
       else {
         var source;
-
         // You can display the image using either:
         //source = {uri: 'data:image/jpeg;base64,' + response.data, isStatic: true};
-
         //Or:
         if (Platform.OS === 'android') {
           source = {uri: response.uri, isStatic: true};
         } else {
           source = {uri: response.uri.replace('file://', ''), isStatic: true};
         }
-
         this.setState({
           avatarSource: source
         });
@@ -66,6 +64,7 @@ export default class ImageSelect extends React.Component {
 
 
     constructor(props) {
+        console.log("props--select",props);
         super(props);
         this.state = {
             dataSource: null,
@@ -102,7 +101,8 @@ export default class ImageSelect extends React.Component {
     formData.append('key', key);
     formData.append('token', token);
 
-    let uploadImageUrl = "http://172.16.0.236:8080/pwmana/itemsController/app/upload";
+    let uploadImageUrl = "http://192.168.0.104:8080/pwmana/itemsController/app/upload";
+    //let uploadImageUrl = "http://172.16.0.236:8080/pwmana/itemsController/app/upload";
     //let uploadImageUrl = "http://172.16.0.236:8080/zt/vehicleIdentification!upload";
 
     return NetUitl.postUrlJson(uploadImageUrl,formData,(response) => {
