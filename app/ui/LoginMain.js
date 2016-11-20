@@ -21,12 +21,16 @@ import LoginButton from '../lib/LoginButton';
 import LoginSuccess from '../ui/LoginSuccess';
 import NetUitl from '../lib/NetUtil';
 import dismissKeyboard from 'react-native/Libraries/Utilities/dismissKeyboard';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 export default class LoginActivity extends Component {
     constructor(props) {
         super(props);
         this.userName = "";
         this.password = "";
+        this.state = {
+            loadingVisible: false
+        };
     }
 
     render() {
@@ -58,6 +62,7 @@ export default class LoginActivity extends Component {
                         this.password = text;
                     }}
                 />
+                <Spinner visible={this.state.loadingVisible} textContent={"登录中..."} textStyle={{color: '#FFF'}} />
                 <LoginButton name='登录' onPressCallback={this.onPressCallback}/>
                 <View style={{flex:1,flexDirection:'row',alignItems:'flex-end',bottom:10}}>
                     <Text style={styles.style_view_unlogin}>无法登录?</Text>
@@ -79,6 +84,10 @@ export default class LoginActivity extends Component {
             ToastAndroid.show("密码不能为空!",ToastAndroid.LONG);
             return false;
         }
+        //将loading中visible的false修改为true
+        this.setState({
+            loadingVisible: !this.state.loadingVisible
+        });
 
         //隐藏键盘
         dismissKeyboard();
@@ -92,6 +101,10 @@ export default class LoginActivity extends Component {
         let url = "http://192.168.0.104:8080/pwmana/user/app/login";
         //let url = "http://172.16.0.236:8080/SSH01/user!reg";
         NetUitl.postUrlText(url,formData,(responseText) => {
+            //拿到登录结果，停止转圈
+            this.setState({
+                loadingVisible: !this.state.loadingVisible
+            });
             if("false"==responseText){
                 ToastAndroid.show("账号或密码不对!",ToastAndroid.LONG);
             }else{

@@ -15,6 +15,7 @@
     "react-native-gifted-listview": "0.0.15",
     "react-native-image-picker": "^0.22.13",
     "react-native-listview-refresher": "^1.0.3",
+    "react-native-loading-spinner-overlay": "^0.3.0",
     "react-native-navbar": "^1.5.4",
     "react-native-navbar-icon": "^1.0.1",
     "react-native-orientation-listener": "0.0.4",
