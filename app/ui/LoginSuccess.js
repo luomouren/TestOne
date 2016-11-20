@@ -14,13 +14,18 @@ import {
 
 import ImageSelect from '../lib/ImageSelect';
 import HistoryDatas from '../lib/HistoryDatas';
-import TabBar from '../lib/TabBar/TabBar';
 
 import NavigationBarIcon from 'react-native-navbar';
+import TabBar from 'react-native-xtabbar';
 
 export default class LoginSuccess extends Component {
-    render() {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
 
+    render() {
+        //NavBar
         const rightButtonConfig = {
             title: 'Next',
             handler: () => alert('hello!'),
@@ -44,12 +49,13 @@ export default class LoginSuccess extends Component {
                                title={titleConfig}/>
 
             <View style={styles.container}>
-                <TabBar style={styles.content}>
+                <TabBar style={styles.content}
+                        onItemSelected={(index) => {console.log(`current item's index is ${index}`);}}>
                     <TabBar.Item
                         icon={require('../img/icon/home_normal.png')}
                         selectedIcon={require('../img/icon/home_hightlight.png')}
                         onPress={() => {
-                            console.log("first onPress");
+                            console.log("first onPress--home");
                         }}
                         title='首页'>
                         <View style={styles.text}>
