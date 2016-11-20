@@ -64,7 +64,6 @@ export default class ImageSelect extends React.Component {
 
 
     constructor(props) {
-        console.log("props--select",props);
         super(props);
         this.state = {
             dataSource: null,
@@ -78,7 +77,6 @@ export default class ImageSelect extends React.Component {
             dataSource: response,
             loaded: true,
         });
-        console.info("====22222===");
         const { navigator } = this.props;
         if (navigator) {
             navigator.push({
@@ -91,7 +89,6 @@ export default class ImageSelect extends React.Component {
                 }
             });
         }
-        console.info("====3333===");
     }
 
   upload() {
@@ -107,9 +104,7 @@ export default class ImageSelect extends React.Component {
     //let uploadImageUrl = "http://172.16.0.236:8080/zt/vehicleIdentification!upload";
 
     return NetUitl.postUrlJson(uploadImageUrl,formData,(response) => {
-        <View><Text>asdfsadfdsfs</Text></View>
-        console.info("====1111===");
-        //this.onImageResult(response);
+        this.onImageResult(response);
     })
   }
 

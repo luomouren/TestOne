@@ -67,14 +67,14 @@ export default class LoginSuccess extends Component {
                         icon={require('../img/icon/camera_normal.png')}
                         selectedIcon={require('../img/icon/camera_hightlight.png')}
                         title='拍照识别'>
-                        <ImageSelect/>
+                        <ImageSelect  {...this.props} />
                     </TabBar.Item>
 
                     <TabBar.Item
                         icon={require('../img/icon/history_normal.png')}
                         selectedIcon={require('../img/icon/history_hightlight.png')}
                         title='历史识别'>
-                        <HistoryDatas/>
+                        <HistoryDatas  {...this.props} />
                     </TabBar.Item>
 
                     <TabBar.Item
@@ -115,63 +115,3 @@ const styles = StyleSheet.create({
         backgroundColor: '#63B8FF',
     },
 });
-
-
-
-
-
-/*
-export default class LoginSuccess extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {};
-
-    }
-    //回到第一个页面去
-    onJump(){
-        const { navigator } = this.props;
-        if (navigator) {
-            navigator.pop();
-        }
-    }
-    //跳转到拍照界面
-    onImageSelect(){
-        const { navigator } = this.props;
-        if (navigator) {
-            navigator.push({
-                name : 'ImageSelect',
-                component : ImageSelect,
-            });
-        }
-    }
-    //跳转到历史识别结果列表
-    onListViewDatas(){
-        const { navigator } = this.props;
-        if (navigator) {
-            navigator.push({
-                name : 'ListViewDatas',
-                component : ListViewDatas,
-            });
-        }
-    }
-    render(){
-        return (
-
-            <View >
-                <TouchableOpacity onPress = {this.onJump.bind(this)}>
-                    <Text> 登录成功，点击返回登录页面 </Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress = {this.onImageSelect.bind(this)}>
-                    <Text> 拍照识别 </Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress = {this.onListViewDatas.bind(this)}>
-                    <Text> 历史识别 </Text>
-                </TouchableOpacity>
-            </View>
-
-
-        );
-
-    }
-
-}*/

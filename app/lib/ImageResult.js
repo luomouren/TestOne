@@ -15,6 +15,8 @@ import {
     ListView,
     PixelRatio,
 } from 'react-native';
+import NavigationBarIcon from 'react-native-navbar';
+
 export default class ImageResult extends React.Component {
     //初始化参数，以防参数没有从上一个页面传过来
     constructor(props) {
@@ -33,23 +35,48 @@ export default class ImageResult extends React.Component {
             avatarSource:this.props.avatarSource,
         });
     }
+
     render() {
         if (!this.state.loaded) {
             return this.renderLoadingView();
         }
 
-        return (
-            <View style={styles.listView}>
-                <View style={styles.container}>
-                    { this.state.avatarSource === null ? <Text>选择图片</Text> :
-                        <Image style={styles.avatar} source={this.state.avatarSource} />
-                    }
-                    <View style={styles.rightContainer}>
 
-                        <Text style={styles.title}>车牌号：{this.state.dataSource.carNo}</Text>
-                        <Text style={styles.filed}>车牌颜色：{this.state.dataSource.numberColor}</Text>
-                        <Text style={styles.filed}>车型：{this.state.dataSource.carType}</Text>
-                        <Text style={styles.filed}>车身颜色：{this.state.dataSource.color}</Text>
+        //NavBar
+        const titleConfig = {
+            title: '拍照识别结果',
+            tintColor:'#fff',
+        };
+
+
+        const leftButton={
+            title : 'Back',
+            handler : () => this.props.navigator.pop(),
+            style : {},
+            tintColor:'#fff',
+            // tintColor : '#E78170',
+            // icon : '../img/icon/bak_normal.png'
+        };
+
+        return (
+            <View style={{ flex: 1, }}>
+                {/*NavBar*/}
+                <NavigationBarIcon style={styles.narBarContainer}
+                                   title={titleConfig} leftButton={leftButton}/>
+
+                <View style={styles.listView}>
+
+                    <View style={styles.container}>
+                        { this.state.avatarSource === null ? <Text>选择图片</Text> :
+                            <Image style={styles.avatar} source={this.state.avatarSource} />
+                        }
+                        <View style={styles.rightContainer}>
+
+                            <Text style={styles.title}>车牌号：{this.state.dataSource.carNo}</Text>
+                            <Text style={styles.filed}>车牌颜色：{this.state.dataSource.numberColor}</Text>
+                            <Text style={styles.filed}>车型：{this.state.dataSource.carType}</Text>
+                            <Text style={styles.filed}>车身颜色：{this.state.dataSource.color}</Text>
+                        </View>
                     </View>
                 </View>
             </View>
@@ -102,5 +129,8 @@ var styles = StyleSheet.create({
         //borderRadius: 90,
         width: 106,
         height: 162,
+    },
+    narBarContainer: {
+        backgroundColor: '#63B8FF',
     },
 });

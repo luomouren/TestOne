@@ -20,6 +20,7 @@
     "react-native-orientation-listener": "0.0.4",
     "react-native-pull": "^1.1.2",
     "react-native-pullview": "^1.0.7",
+    "react-native-redux-router-simple": "^1.0.0",
     "react-native-refreshable-listview": "^1.3.0",
     "react-native-refresher": "^0.1.1",
     "react-native-sk-refreshable-listview": "^1.0.0",
