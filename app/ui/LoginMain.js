@@ -20,6 +20,7 @@ import EditView from '../lib/EditView';
 import LoginButton from '../lib/LoginButton';
 import LoginSuccess from '../ui/LoginSuccess';
 import NetUitl from '../lib/NetUtil';
+import dismissKeyboard from 'react-native/Libraries/Utilities/dismissKeyboard';
 
 export default class LoginActivity extends Component {
     constructor(props) {
@@ -79,7 +80,8 @@ export default class LoginActivity extends Component {
             return false;
         }
 
-
+        //隐藏键盘
+        dismissKeyboard();
         let formData = new FormData();
         formData.append("username",this.userName);
         formData.append("password",this.password);
