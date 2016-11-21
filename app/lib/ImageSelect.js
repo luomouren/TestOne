@@ -7,6 +7,7 @@ import {
   PixelRatio,
   TouchableOpacity,
   TouchableHighlight,
+  ToastAndroid,
   Image,
   Platform
 } from 'react-native';
@@ -92,20 +93,26 @@ export default class ImageSelect extends React.Component {
     }
 
   upload() {
-    let formData = new FormData();
-    let key = 'key';
-    let token = '34567890';
-    formData.append('file', {uri: this.state.avatarSource.uri, type: 'application/octet-stream', name: key});
-    formData.append('key', key);
-    formData.append('token', token);
+      /*console.log("",this.state.avatarSource);*/
+        //判断是否有上传图片
+        if(!this.state.avatarSource){
+          ToastAndroid.show("请选择图片!",ToastAndroid.LONG);
+          return false;
+        }
+        let formData = new FormData();
+        let key = 'key';
+        let token = '34567890';
+        formData.append('file', {uri: this.state.avatarSource.uri, type: 'application/octet-stream', name: key});
+        formData.append('key', key);
+        formData.append('token', token);
 
-    let uploadImageUrl = "http://172.16.0.236:8080/pwmana/itemsController/app/upload";
-    //let uploadImageUrl = "http://172.16.0.236:8080/pwmana/itemsController/app/upload";
-    //let uploadImageUrl = "http://172.16.0.236:8080/zt/vehicleIdentification!upload";
+        let uploadImageUrl = "http://192.16.100.209:8080/pwmana/itemsController/app/upload";
+        //let uploadImageUrl = "http://172.16.0.236:8080/pwmana/itemsController/app/upload";
+        //let uploadImageUrl = "http://172.16.0.236:8080/zt/vehicleIdentification!upload";
 
-    return NetUitl.postUrlJson(uploadImageUrl,formData,(response) => {
-        this.onImageResult(response);
-    })
+        return NetUitl.postUrlJson(uploadImageUrl,formData,(response) => {
+            this.onImageResult(response);
+        })
   }
 
   render() {
@@ -113,7 +120,7 @@ export default class ImageSelect extends React.Component {
       <View style={styles.container}>
         <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
           <View style={[styles.avatar, styles.avatarContainer, {marginBottom: 20}]}>
-          { this.state.avatarSource === null ? <Text>选择图片</Text> :
+          { this.state.avatarSource === null ? <Text>点击选择图片</Text> :
             <Image style={[styles.avatar,,{resizeMode:'cover'}]} source={this.state.avatarSource} />
           }
           </View>

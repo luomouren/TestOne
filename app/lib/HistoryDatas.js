@@ -161,7 +161,7 @@ export default class HistoryDatas extends Component {
       let formData = new FormData();
       formData.append('startNum', 1);
       formData.append('endNum', pageSize);
-      let uploadImageUrl = "http://172.16.0.236:8080/pwmana/itemsController/app/getHistoryVIResultList";
+      let uploadImageUrl = "http://192.16.100.209:8080/pwmana/itemsController/app/getHistoryVIResultList";
       //let uploadImageUrl = "http://172.16.0.236:8080/zt/vehicleIdentification!upload";
 
       return NetUitl.postUrlJson(uploadImageUrl,formData,(response) => {
@@ -194,7 +194,7 @@ export default class HistoryDatas extends Component {
       formData.append('startNum', this.state.dataList.length+1);
       formData.append('endNum', this.state.dataList.length+pageSize);
 
-      let uploadImageUrl = "http://172.16.0.236:8080/pwmana/itemsController/app/getHistoryVIResultList";
+      let uploadImageUrl = "http://192.16.100.209:8080/pwmana/itemsController/app/getHistoryVIResultList";
       //let uploadImageUrl = "http://172.16.0.236:8080/zt/vehicleIdentification!upload";
 
       return NetUitl.postUrlJson(uploadImageUrl,formData,(response) => {
