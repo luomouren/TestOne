@@ -97,8 +97,8 @@ export default class LoginActivity extends Component {
         formData.append("uname","app-test");
         //let url = "http://172.16.0.236:8080/zt/login";
         //let url = "http://172.16.0.236:8080/SpringMVC-Demo/app/loginApp";
-        //let url = "http://172.16.0.236:8080/pwmana/user/app/login";
-        let url = "http://192.168.0.104:8080/pwmana/user/app/login";
+        let url = "http://172.16.0.236:8080/pwmana/user/app/login";
+        //let url = "http://192.168.0.104:8080/pwmana/user/app/login";
         //let url = "http://172.16.0.236:8080/SSH01/user!reg";
         NetUitl.postUrlText(url,formData,(responseText) => {
             //拿到登录结果，停止转圈

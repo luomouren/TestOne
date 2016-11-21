@@ -99,7 +99,7 @@ export default class ImageSelect extends React.Component {
     formData.append('key', key);
     formData.append('token', token);
 
-    let uploadImageUrl = "http://192.168.0.104:8080/pwmana/itemsController/app/upload";
+    let uploadImageUrl = "http://172.16.0.236:8080/pwmana/itemsController/app/upload";
     //let uploadImageUrl = "http://172.16.0.236:8080/pwmana/itemsController/app/upload";
     //let uploadImageUrl = "http://172.16.0.236:8080/zt/vehicleIdentification!upload";
 
@@ -114,7 +114,7 @@ export default class ImageSelect extends React.Component {
         <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
           <View style={[styles.avatar, styles.avatarContainer, {marginBottom: 20}]}>
           { this.state.avatarSource === null ? <Text>选择图片</Text> :
-            <Image style={styles.avatar} source={this.state.avatarSource} />
+            <Image style={[styles.avatar,,{resizeMode:'cover'}]} source={this.state.avatarSource} />
           }
           </View>
         </TouchableOpacity>
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   avatar: {
-    borderRadius: 90,
+    //borderRadius: 90,
     width: 250,
     height: 350
   },
