@@ -50,7 +50,7 @@ export default class ImageResult extends React.Component {
 
 
         const leftButton={
-            title : 'Back',
+            title : '返回',
             handler : () => this.props.navigator.pop(),
             style : {},
             tintColor:'#fff',
